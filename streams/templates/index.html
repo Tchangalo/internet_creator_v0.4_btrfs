@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Topology</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <!-- Header-Bereich -->
+    <header>
+      <h1>Internet Creator v0.4 Btrfs</h1>
+    </header>
+      <!-- Navigationsleiste -->
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('index') }}">Topology</a></li>
+          <li><a href="{{ url_for('provider') }}">Provider</a></li>
+          <li><a href="{{ url_for('provider_turbo') }}">Provider Turbo</a></li>
+          <li><a href="{{ url_for('single_router') }}">Single Router</a></li>
+          <li><a href="{{ url_for('general') }}">General</a></li>
+        </ul>
+      </nav>
+
+    <!-- Flash-Nachrichtenbereich -->
+    <section>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <ul class="flash-messages">
+            {% for category, message in messages %}
+              <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+    </section>
+    
+    <!-- Hauptinhalt -->
+    <main>
+      <div class="image-container">
+        <img src="{{ url_for('static', filename='mplan.png') }}" alt="Network Plan">
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p></p>
+    </footer>
+  </body>
+</html>

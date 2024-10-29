@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>General Network Controls</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+
+    <header>
+      <h1>Internet Creator v0.4 Btrfs</h1>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('index') }}">Topology</a></li>
+        <li><a href="{{ url_for('provider') }}">Provider</a></li>
+        <li><a href="{{ url_for('provider_turbo') }}">Provider Turbo</a></li>
+        <li><a href="{{ url_for('single_router') }}">Single Router</a></li>
+        <li><a href="{{ url_for('general') }}">General</a></li>
+      </ul>
+    </nav>
+    
+    <!-- Flash-Nachrichtenbereich -->
+    <section>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <ul class="flash-messages">
+            {% for category, message in messages %}
+              <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+    </section>
+
+    <!-- Inhalt der Seite -->
+    <main>
+      <h2 class="site-titel">General Network Controls</h2>
+
+      <div class="wrapper">
+        <!-- Restart ISP Column -->
+        <div>
+          <h2 class="gen-titel">Restart ISPs</h2>
+          <form method="post" class="form-container-gen">
+              <label for="restart_isp1_routers">Routers for ISP1:</label>
+              <input type="text" name="restart_isp1_routers" value="{{ config.get('restart_isp1.sh', [''])[0] }}">
+              <label for="restart_isp1_delay">Start Delay for ISP1:</label>
+              <input type="text" name="restart_isp1_delay" value="{{ config.get('restart_isp1.sh', [''])[1] }}">
+              <button type="submit" name="restart_isp1">Restart ISP1</button>
+          </form>
+          <form method="post" class="form-container-gen">
+              <label for="restart_isp2_routers">Routers for ISP2:</label>
+              <input type="text" name="restart_isp2_routers" value="{{ config.get('restart_isp2.sh', [''])[0] }}">
+              <label for="restart_isp2_delay">Start Delay for ISP2:</label>
+              <input type="text" name="restart_isp2_delay" value="{{ config.get('restart_isp2.sh', [''])[1] }}">
+              <button type="submit" name="restart_isp2">Restart ISP2</button>
+          </form>
+          <form method="post" class="form-container-gen">
+              <label for="restart_isp3_routers">Routers for ISP3:</label>
+              <input type="text" name="restart_isp3_routers" value="{{ config.get('restart_isp3.sh', [''])[0] }}">
+              <label for="restart_isp3_delay">Start Delay for ISP3:</label>
+              <input type="text" name="restart_isp3_delay" value="{{ config.get('restart_isp3.sh', [''])[1] }}">
+              <button type="submit" name="restart_isp3">Restart ISP3</button>
+          </form>
+        </div>
+
+        <!-- Start ISP Column -->
+        <div>
+          <h2 class="gen-titel">Start ISPs</h2>
+          <form method="post" class="form-container-gen">
+              <label for="start_isp1_routers">Routers for ISP1:</label>
+              <input type="text" name="start_isp1_routers" value="{{ config.get('start_isp1.sh', [''])[0] }}">
+              <label for="start_isp1_delay">Start Delay for ISP1:</label>
+              <input type="text" name="start_isp1_delay" value="{{ config.get('start_isp1.sh', [''])[1] }}">
+              <button type="submit" name="start_isp1">Start ISP1</button>
+          </form>
+          <form method="post" class="form-container-gen">
+              <label for="start_isp2_routers">Routers for ISP2:</label>
+              <input type="text" name="start_isp2_routers" value="{{ config.get('start_isp2.sh', [''])[0] }}">
+              <label for="start_isp2_delay">Start Delay for ISP2:</label>
+              <input type="text" name="start_isp2_delay" value="{{ config.get('start_isp2.sh', [''])[1] }}">
+              <button type="submit" name="start_isp2">Start ISP2</button>
+          </form>
+          <form method="post" class="form-container-gen">
+              <label for="start_isp3_routers">Routers for ISP3:</label>
+              <input type="text" name="start_isp3_routers" value="{{ config.get('start_isp3.sh', [''])[0] }}">
+              <label for="start_isp3_delay">Start Delay for ISP3:</label>
+              <input type="text" name="start_isp3_delay" value="{{ config.get('start_isp3.sh', [''])[1] }}">
+              <button type="submit" name="start_isp3">Start ISP3</button>
+          </form>
+        </div>
+
+        <!-- Shutdown ISP Column -->
+        <div>
+          <h2 class="gen-titel">Shutdown ISPs</h2>
+          <form method="post" class="form-container-gen">
+              <label for="shutdown_isp1">Routers for ISP1:</label>
+              <input type="text" name="shutdown_isp1" value="{{ config.get('shutdown_isp1.sh', '') }}">
+              <button type="submit" name="shutdown_isp1">Shutdown ISP1</button>
+          </form>
+          <form method="post" class="form-container-gen-x">
+              <label for="shutdown_isp2">Routers for ISP2:</label>
+              <input type="text" name="shutdown_isp2" value="{{ config.get('shutdown_isp2.sh', '') }}">
+              <button type="submit" name="shutdown_isp2">Shutdown ISP2</button>
+          </form>
+          <form method="post" class="form-container-gen-x">
+              <label for="shutdown_isp3">Routers for ISP3:</label>
+              <input type="text" name="shutdown_isp3" value="{{ config.get('shutdown_isp3.sh', '') }}">
+              <button type="submit" name="shutdown_isp3">Shutdown ISP3</button>
+          </form>
+        </div>
+
+        <!-- Destroy ISP Column -->
+        <div>
+          <h2 class="gen-titel">Destroy ISPs</h2>
+          <form method="post" class="form-container-gen">
+              <label for="destroy_isp1">Routers for ISP1:</label>
+              <input type="text" name="destroy_isp1" value="{{ config.get('destroy_isp1.sh', '') }}">
+              <button type="submit" name="destroy_isp1">Destroy ISP1</button>
+          </form>
+          <form method="post" class="form-container-gen-x">
+              <label for="destroy_isp2">Routers for ISP2:</label>
+              <input type="text" name="destroy_isp2" value="{{ config.get('destroy_isp2.sh', '') }}">
+              <button type="submit" name="destroy_isp2">Destroy ISP2</button>
+          </form>
+          <form method="post" class="form-container-gen-x">
+              <label for="destroy_isp3">Routers for ISP3:</label>
+              <input type="text" name="destroy_isp3" value="{{ config.get('destroy_isp3.sh', '') }}">
+              <button type="submit" name="destroy_isp3">Destroy ISP3</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p></p>
+    </footer>
+  </body>
+</html>

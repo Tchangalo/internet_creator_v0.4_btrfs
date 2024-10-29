@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Provider Turbo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    
+    <header>
+      <h1>Internet Creator v0.4 Btrfs</h1>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('index') }}">Topology</a></li>
+        <li><a href="{{ url_for('provider') }}">Provider</a></li>
+        <li><a href="{{ url_for('provider_turbo') }}">Provider Turbo</a></li>
+        <li><a href="{{ url_for('single_router') }}">Single Router</a></li>
+        <li><a href="{{ url_for('general') }}">General</a></li>
+      </ul>
+    </nav>
+    
+    <!-- Flash-Nachrichtenbereich -->
+    <section>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <ul class="flash-messages">
+            {% for category, message in messages %}
+              <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+    </section>
+
+    <h2 class="site-titel">Turbo Provider Creator</h2>
+
+    <!-- Inhalt der Seite -->
+    <main>
+      <form method="post" class="form-container">
+          <label for="Node">Node:</label>
+          <input type="text" name="Node" value="{{ config.get('Node', '') }}">
+          
+          <label for="Provider">Provider:</label>
+          <input type="text" name="Provider" value="{{ config.get('Provider', '') }}">
+          
+          <label for="Routers">Routers:</label>
+          <input type="text" name="Routers" value="{{ config.get('Routers', '') }}">
+          
+          <label for="Limit">Limit:</label>
+          <input type="text" name="Limit" value="{{ config.get('Limit', '') }}">
+
+          <div class="checkbox-label">
+            <input type="checkbox" name="refresh_vyos_upgrade" id="refresh_vyos_upgrade" value="1"><br>
+            <label for="refresh_vyos_upgrade">Refresh Vyos Upgrade Version</label>
+          </div>
+          
+          <button type="submit">Create Provider Turbo</button>
+      </form>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p></p>
+    </footer>
+  </body>
+</html>
+
