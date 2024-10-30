@@ -43,12 +43,6 @@ Der Internet Creator kommt per default im Dark Mode, kann aber folgendermaßen a
 
 (2) Benenne den Ordner ~/streams/static_light/ um in ~/streams/static/
 
-(3) Starte den Internet Creator neu mittels  
-
-strg+C
-
-python inc.py
-
 ![foto2](Bilder/02.png)
 
 Nicht zusammen mit Dark Reader verwenden!
