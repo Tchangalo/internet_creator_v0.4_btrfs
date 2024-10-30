@@ -70,7 +70,7 @@ then
 
 	download_url=$(curl -s https://api.github.com/repos/vyos/vyos-nightly-build/releases/latest | jq -r ".assets[0].browser_download_url")
 
-	echo -e "${C}Waiting for Download of latest Vyos version into /home/user/streams/ansible/vyos-files to complete ...${NC}"
+	echo -e "${C}Waiting for download of latest Vyos version into /home/user/streams/ansible/vyos-files to complete ...${NC}"
 	if curl -LO "$download_url" 
 	then
 		echo -e "${C}Download completed successfully${NC}"
