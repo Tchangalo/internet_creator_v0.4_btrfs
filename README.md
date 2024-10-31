@@ -33,9 +33,8 @@ Bei der allerersten Verwendung auf jeden Fall die Option Refresh Vyos Upgrade Ve
 
 Nötigenfalls sudo-Password des Users im Terminal eingeben.
 
-
+![foto1](Bilder/00.png)
 ![foto1](Bilder/01.png)
-
 
 Der Internet Creator kommt per default im Dark Mode, kann aber folgendermaßen auf Light Mode umgestellt werden:
 
